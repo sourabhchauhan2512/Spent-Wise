@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise - Student Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">₹ SpendWise</div>
+    <span>Student Expense Tracker</span>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <p>PERSONAL FINANCE MANAGEMENT</p>
+        <h1>Manage Your Money<br><span>Smartly.</span></h1>
+        <p class="hero-text">
+            Track your daily expenses and manage your monthly budget easily.
+        </p>
+    </section>
+
+    <section class="summary">
+        <div class="card">
+            <h3>Monthly Expenses</h3>
+            <h2 id="monthTotal">₹0.00</h2>
+        </div>
+        <div class="card">
+            <h3>Total Expenses</h3>
+            <h2 id="allTotal">₹0.00</h2>
+        </div>
+        <div class="card">
+            <h3>Transactions</h3>
+            <h2 id="transactionCount">0</h2>
+        </div>
+        <div class="card">
+            <h3>Monthly Budget</h3>
+            <h2 id="budgetDisplay">₹5,000.00</h2>
+            <button id="editBudget" class="small-btn">Edit Budget</button>
+        </div>
+    </section>
+
+    <section class="main-grid">
+
+        <div class="panel">
+            <h2>Add New Expense</h2>
+
+            <form id="expenseForm">
+                <label>Expense Name</label>
+                <input type="text" id="title"
+                    placeholder="Example: Food, Books" required>
+
+                <label>Amount (₹)</label>
+                <input type="number" id="amount"
+                    placeholder="Enter amount" min="0.01" step="0.01" required>
+
+                <label>Category</label>
+                <select id="category">
+                    <option>Food</option>
+                    <option>Travel</option>
+                    <option>Education</option>
+                    <option>Shopping</option>
+                    <option>Bills</option>
+                    <option>Entertainment</option>
+                    <option>Other</option>
+                </select>
+
+                <label>Date</label>
+                <input type="date" id="date" required>
+
+                <button type="submit" class="add-btn">
+                    + Add Expense
+                </button>
+            </form>
+        </div>
+
+        <div class="panel">
+            <h2>Monthly Budget</h2>
+            <p>Budget Used</p>
+            <h2 id="budgetPercent">0%</h2>
+
+            <div class="progress">
+                <div id="budgetBar"></div>
+            </div>
+
+            <div class="budget-info">
+                <p>Spent: <strong id="budgetSpent">₹0.00</strong></p>
+                <p>Remaining: <strong id="budgetRemaining">₹5,000.00</strong></p>
+            </div>
+
+            <div class="message" id="budgetMessage">
+                Add expenses to see your budget progress.
+            </div>
+        </div>
+
+    </section>
+
+    <section class="panel expenses-panel">
+        <h2>Recent Expenses</h2>
+
+        <div class="filters">
+            <input type="search" id="searchInput"
+                placeholder="Search expense...">
+
+            <select id="filterCategory">
+                <option value="All">All Categories</option>
+                <option>Food</option>
+                <option>Travel</option>
+                <option>Education</option>
+                <option>Shopping</option>
+                <option>Bills</option>
+                <option>Entertainment</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Expense</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="expenseRows">
+                    <tr>
+                        <td colspan="5">No expenses added yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="bottom">
+            <span id="visibleCount">Showing 0 expenses</span>
+            <button id="clearAll" class="clear-btn">Clear All Data</button>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>SpendWise | Student Expense Tracker Mini Project</p>
+    <p>Developed using HTML, CSS and JavaScript</p>
+</footer>
+
+<dialog id="budgetDialog">
+    <form method="dialog" id="budgetForm">
+        <h2>Set Monthly Budget</h2>
+        <input type="number" id="budgetInput"
+            min="1" step="0.01" required>
+        <div class="dialog-buttons">
+            <button value="cancel" type="submit">Cancel</button>
+            <button value="save" type="submit">Save</button>
+        </div>
+    </form>
+</dialog>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
